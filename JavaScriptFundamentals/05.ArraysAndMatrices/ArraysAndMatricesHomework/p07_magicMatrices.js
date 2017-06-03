@@ -20,8 +20,6 @@ function checkIfMagic(matrix) {
         arr.add(sum);
     }
 
-
-
     for (let i = 0; i < arr.length; i++) {
         let current = arr[i];
         for (let j = 0; j < arr.length; j++) {
@@ -33,12 +31,6 @@ function checkIfMagic(matrix) {
             }
         }
     }
-
-    // if (arr.length != 1) {
-    //     console.log('false');
-    // } else {
-    //     console.log('true');
-    // }
 }
 
 checkIfMagic([[4, 5, 6],
