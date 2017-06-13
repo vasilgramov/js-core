@@ -33,8 +33,8 @@ function solve(array) {
             current["opponents"] = [];
         }
 
-        if (arg1 === 'age') {     // ages
-            current["age"] = arg2;  // parse ?
+        if (arg1 === 'age') {
+            current["age"] = arg2;
         } else if (arg1 === 'win') {
             current["opponents"].push(arg2);
             current["wins"]++;
