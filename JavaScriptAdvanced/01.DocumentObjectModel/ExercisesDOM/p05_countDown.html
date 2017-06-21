@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="time" style="border:3px solid blue; text-align:center; font-size:2em;" disabled="true"/>
+<script>window.onload = function () {
+    countdown(600);
+}</script>
+<script>
+    function countdown(time) {
+        let currentTime = Number(time);
+        let output = document.getElementById("time");
+
+        let timer = setInterval(tick, 1000);
+
+        function tick() {
+            currentTime--;
+            if (currentTime === 0) {
+                window.clearInterval(timer);
+            }
+
+            output.value = `${Math.floor(currentTime / 60)}:${("0" + currentTime % 60).slice(-2)}`;
+        }
+    }
+</script>
+</body>
+</html>
