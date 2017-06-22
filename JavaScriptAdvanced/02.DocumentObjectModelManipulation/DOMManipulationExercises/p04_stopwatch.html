@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="time" style="border:3px solid blue; text-align:center; font-size:2em; margin-bottom:10px">00:00</div>
+<button id="startBtn">Start</button>
+<button id="stopBtn" disabled="true">Stop</button>
+<script>window.onload = function () {
+    stopwatch();
+}</script>
+<script>
+    function stopwatch() {
+        let time, intervalID;
+        let startBtn = document.getElementById('startBtn');
+        let stopBtn = document.getElementById('stopBtn');
+
+        startBtn.addEventListener('click', function () {
+            time = 0;
+            incrementTime();
+            intervalID = setInterval(incrementTime, 1000);
+            startBtn.disabled = true;
+            stopBtn.disabled = false;
+        });
+
+        stopBtn.addEventListener('click', function () {
+            clearInterval(intervalID);
+            startBtn.disabled = false;
+            stopBtn.disabled = true;
+        });
+
+        function incrementTime() {
+            document.getElementById('time').textContent =
+                ("0" + Math.trunc(time / 60)).slice(-2) +
+                ':' + ("0" + (time % 60)).slice(-2);
+            time++;
+        }
+    }
+
+    //    function stopwatch() {
+    //        let watch = document.getElementById('time');
+    //
+    //        let time = null;
+    //        let timer = null;
+    //
+    //        let startBtn = document.getElementById('startBtn');
+    //        startBtn.addEventListener('click', start);
+    //
+    //        let stopBtn = document.getElementById('stopBtn');
+    //        stopBtn.addEventListener('click', stop);
+    //
+    //        function start() {
+    //            time = -1;
+    //            timer = setInterval(tick, 1000);
+    //            startBtn.disabled = true;
+    //            stopBtn.disabled = false;
+    //        }
+    //
+    //        function stop() {
+    //            clearInterval(timer);
+    //            startBtn.disabled = false;
+    //            stopBtn.disabled = true;
+    //        }
+    //
+    //        function tick() {
+    //            time++;
+    //
+    //            let min = Math.floor(time / 60);
+    //            let sec = time % 60;
+    //            watch.textContent = `${("0" + min).slice(-2)}:${("0" + sec).slice(-2)}`;
+    //        }
+    //    }
+</script>
+</body>
+</html>
