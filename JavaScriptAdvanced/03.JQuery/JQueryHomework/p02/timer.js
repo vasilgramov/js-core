@@ -12,14 +12,20 @@ function timer() {
     stopBtn.on('click', stopTimer);
 
     let timer;
+    let isRunning = false;
 
     function continueTimer() {
-        console.log('here');
-        timer = setInterval(step, 1000);
+        if (!isRunning) {
+            isRunning = true;
+            timer = setInterval(step, 1000);
+        }
     }
 
     function stopTimer() {
-        clearInterval(timer);
+        if (isRunning) {
+            isRunning = false;
+            clearInterval(timer);
+        }
     }
 
     function step() {
