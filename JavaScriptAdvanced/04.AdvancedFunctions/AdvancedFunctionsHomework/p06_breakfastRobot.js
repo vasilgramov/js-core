@@ -1,0 +1,7 @@
+function solve() {
+    
+
+    return function () {
+        
+    }
+}
