@@ -1,28 +1,50 @@
-function solve() {
+(function solve() {
     String.prototype['ensureStart'] = function (string) {
         if (!this.startsWith(string)) {
-            return string + " " + this;
+            return string + this;
+        } else {
+            return this + "";
         }
     };
 
     String.prototype['ensureEnd'] = function (string) {
         if (!this.endsWith(string)) {
-            return this + " " + string;
+            return this + string;
+        } else {
+            return this + ""
         }
     };
 
     String.prototype['isEmpty'] = function () {
-        return this === '';
+        return this.length === 0;
     };
 
     String.prototype['truncate'] = function (n) {
-        let newStr = this;
-        if (this.length >= n) {
-            let sliced = this.slice(0, n - 3);
-            return sliced + "...";
-        }
+        if (n < this.length) {
+            let result = '';
 
-        return this + '';
+            let parts = this.split(' ');
+            for (let part of parts) {
+                if ((result + part).length <= n - 3) {
+                    if (result === '') {
+                        result = part;
+                    } else {
+                        result = result + ' ' + part;
+                    }
+                } else {
+                    break;
+                }
+            }
+
+            // for (let i = 0; i < n - 3; i++) {
+            //     result += this[i];
+            // }
+
+            result += "...";
+            return result.substring(0, n);
+        } else {
+            return this + '';
+        }
     };
 
 
@@ -38,11 +60,7 @@ function solve() {
 
         return string;
     };
+})();
 
-    let str = 'hello my string';
-    str = str.truncate(14);
-    console.log(str);
-}
-
-solve();
+// solve();
 
