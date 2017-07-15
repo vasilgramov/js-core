@@ -1,20 +1,27 @@
-/*let result = */function solve() {
+let result = function solve() {
 
     class Melon {
         constructor(weight, melonSort) {
             if (new.target === Melon) {
-                throw new Error("Abstract class cannot be instantiated directly");
+                throw new TypeError("Abstract class cannot be instantiated directly");
             }
 
-            this.weight = weight;
+            this.weight = Number(weight);
             this.melonSort = melonSort;
+            this.element = "";
+            this._elementIndex =
+                this.weight * this.melonSort.length;
+        }
+
+        get elementIndex() {
+            return this._elementIndex;
         }
 
         toString() {
             let result = '';
-            let element = this.constructor.name.substring(0, this.constructor.name.length - 5);
-            result = `Element: ${element}\n`;
-            result += `Sort: ${this.melonSort}`;
+            result = `Element: ${this.element}\n`;
+            result += `Sort: ${this.melonSort}\n`;
+            result += `Element Index: ${this.elementIndex}`;
 
             return result;
         }
@@ -24,16 +31,7 @@
 
         constructor(weight, melonSort) {
             super(weight, melonSort);
-            this._index = this.weight * this.melonSort.length;
-        }
-
-
-        get index() {
-            return this._index;
-        }
-
-        toString() {
-            return super.toString() + `\nElement Index ${this.index}`;
+            super.element = 'Water';
         }
     }
 
@@ -41,17 +39,7 @@
 
         constructor(weight, melonSort) {
             super(weight, melonSort);
-            this._index = this.weight * this.melonSort.length;
-        }
-
-
-        get index() {
-            return this._index;
-        }
-
-
-        toString() {
-            return super.toString() + `\nElement Index ${this.index}`;
+            super.element = 'Fire';
         }
     }
 
@@ -59,16 +47,7 @@
 
         constructor(weight, melonSort) {
             super(weight, melonSort);
-            this._index = weight * melonSort.length;
-        }
-
-
-        get index() {
-            return this._index;
-        }
-
-        toString() {
-            return super.toString() + `\nElement Index ${this.index}`;
+            super.element = 'Earth';
         }
     }
 
@@ -76,16 +55,21 @@
 
         constructor(weight, melonSort) {
             super(weight, melonSort);
-            this._index = weight * melonSort.length;
+            super.element = 'Air';
+        }
+    }
+
+    class Melolemonmelon extends Watermelon {
+
+        constructor(weight, melonSort) {
+            super(weight, melonSort);
+            this.element = 'Water';
+            this.elements = ['Fire', 'Earth', 'Air', 'Water'];
+            this.elIndex = 0;
         }
 
-
-        get index() {
-            return this._index;
-        }
-
-        toString() {
-            return super.toString() + `\nElement Index ${this.index}`;
+        morph() {
+            this.element = this.elements[this.elIndex++ % 4];
         }
     }
 
@@ -94,9 +78,10 @@
         Watermelon,
         Firemelon,
         Earthmelon,
-        Airmelon
+        Airmelon,
+        Melolemonmelon
     };
-}
+};
 
 let Watermelon = result().Watermelon;
 let m = new Watermelon(5, 'Rotten');
