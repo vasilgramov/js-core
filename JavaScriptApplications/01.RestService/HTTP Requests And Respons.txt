@@ -1,0 +1,28 @@
+HTTP Requests And Respons
+
+-- https://api.github.com/users/testnakov/repos
+-- https://softunilab.firebaseio.com/.json
+-- https://api.github.com/repos/testnakov/test-nakov-repo/issues
+-- headers: basic-auth
+-- {
+    name: "pesho",
+    author: "gosho
+  }
+-- year 1981 author author changed
+-- {
+        "Plovdiv": {
+            "lat": 33,
+            "lon": 33
+        }
+    }
+-- {
+        "version": "3.9.37",
+        "kinvey": "hello HttpAndRest",
+        "appName": "HttpAndRest",
+        "environmentName": "Development"
+    }
+-- {
+        "author": "Ivan Vazov",
+        "title": "Pod Igoto",
+        "published": 1894
+    }
