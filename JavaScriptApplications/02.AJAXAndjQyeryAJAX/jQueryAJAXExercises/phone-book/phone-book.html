@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+
+        input {
+            margin: 5px;
+        }
+
+        label {
+            display: inline-block;
+            width: 50px;
+        }
+
+    </style>
+    <meta charset="UTF-8">
+    <title>PhoneBook</title>
+</head>
+<body>
+    <h1>Phonebook</h1>
+
+    <ul id="contacts"></ul>
+    <button id="loadBtn">Load</button>
+
+    <h1>Create Contact</h1>
+
+    <div>
+        <label for="name">Person: </label><input id="name" type="text">
+    </div>
+    <div>
+        <label for="phone">Phone: </label><input id="phone" type="text">
+    </div>
+    <div>
+        <button id="createBtn">Create</button>
+    </div>
+
+<script src="../jquery.min.js"></script>
+<script src="phone-book.js"></script>
+</body>
+</html>
