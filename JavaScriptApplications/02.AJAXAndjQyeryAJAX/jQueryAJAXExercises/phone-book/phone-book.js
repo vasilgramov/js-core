@@ -24,7 +24,7 @@ $(() => {
 
             contacts
                 .append($('<li>').text(`${contact.name}: ${contact.phone}`)
-                .append($('<a>').attr('href', '#').text('[Delete]').click(() => deleteContact(key))));
+                .append($('<button>[Delete]</button>').click(() => deleteContact(key))));
         }
     }
 
@@ -47,7 +47,7 @@ $(() => {
 
         $.ajax(req);
     }
-    
+
     function deleteContact(key) {
         let req = {
             url: baseUrl + `/${key}.json`,
