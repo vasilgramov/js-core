@@ -1,17 +1,22 @@
 function attachEvents() {
-    console.log('started');
 
     const baseUrl = 'https://baas.kinvey.com/appdata/kid_ByshmGtIb/';
     const username = 'Vladix';
     const password = '1234';
 
-    const select = $('#posts');
+    const titlesSelect = $('#posts');
+    const postTitle = $('#post-title');
+    const postBody = $('#post-body');
+    const commentsList = $('#post-comments');
+
 
     $('#btnLoadPosts').click(loadPosts);
     $('#btnViewPost').click(viewPost);
 
-
     function loadPosts() {
+        titlesSelect.empty()
+
+
         let req = {
             url: baseUrl + 'posts',
             method: 'GET',
@@ -24,16 +29,21 @@ function attachEvents() {
 
         $.ajax(req);
     }
+
     function displayPosts(data) {
         for (let post of data) {
             $('<option>').val(post._id).text(post.title)
-                .appendTo(select);
+                .appendTo(titlesSelect);
         }
     }
 
     function viewPost() {
-        let selected = select.find(':selected').val();
-        // ?query={"post_id":"id"}
+        postBody.empty();
+        commentsList.empty();
+
+        let selected = titlesSelect.find(':selected').val();
+
+        displayTitleBody(selected);
 
         let req = {
             url: baseUrl + `comments/?query={"post_id":"${selected}"}`,
@@ -41,7 +51,7 @@ function attachEvents() {
             headers: {
                 "Authorization": "Basic " + btoa(username + ":" + password)
             },
-            success: () => { displayComments(); displayTitleBody(selected) },
+            success: displayComments,
             error: displayError
         };
 
@@ -49,16 +59,30 @@ function attachEvents() {
     }
 
     function displayComments(data) {
-
+        for (let comment of data) {
+            commentsList.append($('<li>').text(comment.text));
+        }
     }
 
     function displayTitleBody(id) {
+        let req = {
+            url: baseUrl + 'posts/' + id,
+            method: 'GET',
+            headers: {
+                "Authorization": "Basic " + btoa(username + ":" + password)
+            },
+            success: (data) => {
+                postTitle.text(data.title);
+                postBody.text(data.body);
+            },
+            error: displayError
+        };
 
+        $.ajax(req);
     }
 
-    
-    function displayError() {
-        // TODO:
-        console.log('ERROR');
+    function displayError(err) {
+        let errorDiv = $("<div>").text("Error: " + err.status + ' (' + err.statusText + ')');
+        $(document.body).prepend(errorDiv);
     }
 }
