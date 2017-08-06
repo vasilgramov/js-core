@@ -74,3 +74,8 @@
 .col {
     float: left;
 }
+
+.active {
+    background: #d59450;
+    color: #ffffff;
+}
