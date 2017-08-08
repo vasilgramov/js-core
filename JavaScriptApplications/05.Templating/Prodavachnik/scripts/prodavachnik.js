@@ -305,6 +305,7 @@ function startApp() {
         $('#formEditAd textarea[name=description]').val(ad.description);
         $('#formEditAd input[name=datePublished]').val(ad.date_published);
         $('#formEditAd input[name=price]').val(ad.price);
+        $('#formEditAd input[name=imageUrl]').val(ad.img_url);
         
         showSection('#viewEditAd');
     }
@@ -320,6 +321,7 @@ function startApp() {
             description: $('#formEditAd textarea[name=description]').val(),
             date_published: $('#formEditAd input[name=datePublished]').val(),
             price: $('#formEditAd input[name=price]').val(),
+            img_url: $('#formEditAd input[name=imageUrl]').val()
         };
 
         console.log(adData);
