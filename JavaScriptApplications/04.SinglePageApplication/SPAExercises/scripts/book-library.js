@@ -44,7 +44,6 @@ function startApp() {
     $('#linkListBooks').click(listBooks);
     $('#formCreateBook').submit(createBook);
 
-    // ################################
 
     function register() {
         let username = $('#formRegister').find('[name=username]').val();
@@ -322,7 +321,7 @@ function startApp() {
 
             function afterUpdate() {
                 notify('#infoBox', 'Book updated!');
-                
+
                 listBooks();
             }
         }
