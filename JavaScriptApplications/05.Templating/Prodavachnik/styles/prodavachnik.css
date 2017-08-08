@@ -159,5 +159,23 @@ footer {
     padding: 15px 10px;
     font-size: 0.8em;
     text-align: center;
+}
 
+.ad-box {
+    width: 300px;
+    border: 1px solid black;
+    text-align: center;
+    margin: 20px;
+}
+
+.ad-title {
+    background: #333333;
+    color: #ffffff;
+}
+
+.ad-box img {
+    height: auto;
+    width: auto;
+    max-width: 250px;
+    max-height: 250px;
 }

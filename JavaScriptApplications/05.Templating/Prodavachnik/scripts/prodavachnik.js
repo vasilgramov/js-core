@@ -208,12 +208,15 @@ function startApp() {
                 for (let ad of ads) {
                     let links = [];
 
+                    links.push($('<a href="#">[Read More]</a>').click(() => viewAdDetails(ad)));
+
                     if (ad._acl.creator === sessionStorage['userId']) {
                         let deleteLink = $('<a href="#">[Delete]</a>')
                             .click(() => deleteAd(ad));
                         let editLink = $('<a href="#">[Edit]</a>')
                             .click(() => loadAdForEdit(ad));
-                        links = [deleteLink, ' ', editLink];
+                        links.push(deleteLink);
+                        links.push(editLink);
                     }
                     
                     adsTable.append($('<tr>').append(
@@ -240,7 +243,14 @@ function startApp() {
             description: $('#formCreateAd textarea[name=description]').val(),
             date_published: $('#formCreateAd input[name=datePublished]').val(),
             price: $('#formCreateAd input[name=price]').val(),
+            img_url: $('#formCreateAd input[name=imageUrl]').val()
         };
+
+        $('#formCreateAd input[name=title]').val('');
+        $('#formCreateAd textarea[name=description]').val('');
+        $('#formCreateAd input[name=datePublished]').val('');
+        $('#formCreateAd input[name=price]').val('');
+        $('#formCreateAd input[name=imageUrl]').val('');
 
         $.ajax({
             method: "POST",
@@ -256,6 +266,19 @@ function startApp() {
 
             showInfo('Ad created.');
         }
+    }
+
+    function viewAdDetails(ad) {
+        $('#viewDetailsAd').empty();
+
+        $('#viewDetailsAd')
+            .append($('<div class="ad-box">')
+                .append($(`<div class="ad-title">${ad.title}</div>`))
+                .append($(`<div><img src="${ad.img_url}" alt="Ad Image"></div>`))
+                .append($(`<div>Price ${ad.price} | By ${ad.publisher}</div>`))
+            );
+
+        showSection('#viewDetailsAd');
     }
 
     function deleteAd(ad) {
@@ -289,20 +312,17 @@ function startApp() {
     function editAd() {
         const adUrl =  baseURL + "appdata/" + appKey + "/ads/" + $('#formEditAd input[name=id]').val();
 
-        /*
-         $('#formEditAd input[name=id]').val(ad._id);
-         $('#formEditAd input[name=title]').val(ad.title);
-         $('#formEditAd textarea[name=description]').val(ad.description);
-         $('#formEditAd input[name=datePublished]').val(ad.date_published);
-         $('#formEditAd input[name=price]').val(ad.price);
-         */
+        console.log(sessionStorage.getItem('username'));
 
         let adData = {
             title: $('#formEditAd input[name=title]').val(),
+            publisher: sessionStorage.getItem('username'),
             description: $('#formEditAd textarea[name=description]').val(),
             date_published: $('#formEditAd input[name=datePublished]').val(),
             price: $('#formEditAd input[name=price]').val(),
         };
+
+        console.log(adData);
 
         $.ajax({
             method: "PUT",
