@@ -162,6 +162,9 @@ footer {
 }
 
 .ad-box {
+    position:fixed;
+    top: 25%;
+    left: 38%;
     width: 300px;
     border: 1px solid black;
     text-align: center;
