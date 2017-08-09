@@ -1,9 +1,24 @@
 function startApp() {
 
+    const templates = { };
+
     if (sessionStorage.getItem('username') !== null) {
         loginView();
     } else {
         logoutView();
+    }
+
+    loadTemplates();
+
+    async function loadTemplates() {
+
+        let [ad, adDetails] = await Promise.all([
+            $.get('templates/ad.hbs'),
+            $.get('templates/adDetails.hbs')
+        ]);
+
+        templates.ad = Handlebars.compile(ad);
+        templates.adDetails = Handlebars.compile(adDetails);
     }
 
     $('#linkHome').click(() => showSection('#viewHome'));
@@ -218,13 +233,10 @@ function startApp() {
                         links.push(deleteLink);
                         links.push(editLink);
                     }
-                    
+
+                    let adPlaceholder = templates.ad(ad);
                     adsTable.append($('<tr>').append(
-                        $('<td>').text(ad.title),
-                        $('<td>').text(ad.publisher),
-                        $('<td>').text(ad.description),
-                        $('<td>').text(ad.price),
-                        $('<td>').text(ad.date_published),
+                        adPlaceholder,
                         $('<td>').append(links)
                     ));
                 }
@@ -271,12 +283,7 @@ function startApp() {
     function viewAdDetails(ad) {
         $('#viewDetailsAd').empty();
 
-        $('#viewDetailsAd')
-            .append($('<div class="ad-box">')
-                .append($(`<div class="ad-title">${ad.title}</div>`))
-                .append($(`<div><img src="${ad.img_url}" alt="Ad Image"></div>`))
-                .append($(`<div>Price ${ad.price} | By ${ad.publisher}</div>`))
-            );
+        $('#viewDetailsAd').append(templates.adDetails(ad));
 
         showSection('#viewDetailsAd');
     }
@@ -313,8 +320,6 @@ function startApp() {
     function editAd() {
         const adUrl =  baseURL + "appdata/" + appKey + "/ads/" + $('#formEditAd input[name=id]').val();
 
-        console.log(sessionStorage.getItem('username'));
-
         let adData = {
             title: $('#formEditAd input[name=title]').val(),
             publisher: sessionStorage.getItem('username'),
@@ -323,8 +328,6 @@ function startApp() {
             price: $('#formEditAd input[name=price]').val(),
             img_url: $('#formEditAd input[name=imageUrl]').val()
         };
-
-        console.log(adData);
 
         $.ajax({
             method: "PUT",

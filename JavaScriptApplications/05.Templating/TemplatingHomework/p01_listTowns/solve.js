@@ -1,5 +1,11 @@
 $(() => {
 
+    /*
+         !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+         to make it work -> install handlebars & jquery
+         !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+     */
+
     const townsInput = $('#towns');
     const btnLoad = $('#btnLoadTowns');
     const targetList = $('#townsList');

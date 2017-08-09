@@ -1,5 +1,11 @@
 $(() => {
 
+    /*
+         !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+         to make it work -> install handlebars & jquery
+         !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+     */
+
     const SHOW_STATUS_CODE = 'Show status code';
     const HIDE_STATUS_CODE = 'Hide status code';
 
@@ -8,7 +14,6 @@ $(() => {
         cats: []
     };
     const templates = { };
-
 
 
     loadData();
