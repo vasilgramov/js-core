@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Book Library</title>
+
+		<link rel="stylesheet" type="text/css" href="css/book-library.css" />
+
+		<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+		<script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
+		<script src="../node_modules/sammy/lib/min/sammy-0.7.6.min.js"></script>
+		<script src="../node_modules/sammy/lib/min/plugins/sammy.handlebars-0.7.6.min.js"></script>
+
+		<script src="scripts/models/auth.js"></script>
+		<script src="scripts/models/requester.js"></script>
+
+		<script src="scripts/app.js"></script>
+	</head>
+
+    <body onload="startApp()">
+
+	<!--<section id="loadingBox" class="notification">Loading ...</section>-->
+
+	<div id="infoBox" class="notification" disabled></div>
+
+	<div id="errorBox" class="notification" disabled></div>
+
+	<div id="main">	</div>
+
+	<main>
+			<section id="viewBooks">
+				<h1>Books</h1>
+				<div class="content">
+					<div id="books">
+						<table>
+							<tr>
+								<th>Title</th>
+								<th>Author</th>
+								<th>Description</th>
+								<th>Actions</th>
+							</tr>
+							<tr>
+								<td>Book title</td>
+								<td>Book author</td>
+								<td>Book description</td>
+								<td>
+									<a href="#">[Delete]</a>
+									<a href="#">[Edit]</a>
+								</td>
+							</tr>
+							<tr>
+								<td>Book title</td>
+								<td>Book author</td>
+								<td>Book description</td>
+								<td>
+									<a href="#">[Delete]</a>
+									<a href="#">[Edit]</a>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</section>
+
+			<section id="viewEditBook">
+				<h1>Edit existing book</h1>
+				<div class="content">
+					<form id="formEditBook">
+						<div><input type="hidden" name="id" required /></div>
+						<div>Title:</div>
+						<div><input type="text" name="title" required /></div>
+						<div>Author:</div>
+						<div><input type="text" name="author" required /></div>
+						<div>Description:</div>
+						<div><textarea name="description" rows="10" required></textarea></div>
+						<div><input type="submit" value="Edit" /></div>
+					</form>
+				</div>
+			</section>
+		</main>

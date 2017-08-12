@@ -1,0 +1,12 @@
+<header id="menu">
+    <a href="#/home" id="linkHome">Home</a>
+    {{#if isLogged}}
+        <a href="#/listBooks" id="linkListBooks">List Books</a>
+        <a href="#/createBook" id="linkCreateBook">Create Book</a>
+        <a href="#/logout" id="linkLogout">Logout</a>
+        <span>{{username}}</span>
+    {{else}}
+        <a href="#/login" id="linkLogin">Login</a>
+        <a href="#/register" id="linkRegister">Register</a>
+    {{/if}}
+</header>
