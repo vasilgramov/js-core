@@ -1,5 +1,7 @@
 function startApp() {
 
+	//  !!! DOWNLOAD MODULES !!!
+
     const templates = { };
 
     if (sessionStorage.getItem('username') !== null) {

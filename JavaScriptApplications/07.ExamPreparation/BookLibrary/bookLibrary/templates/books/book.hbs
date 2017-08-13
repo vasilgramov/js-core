@@ -1,0 +1,11 @@
+<tr>
+    <td>{{title}}</td>
+    <td>{{author}}</td>
+    <td>{{description}}</td>
+    {{#if isCreator}}
+        <td>
+            <a href="#/delete/{{_id}}">[Delete]</a>
+            <a href="#/edit/{{_id}}">[Edit]</a>
+        </td>
+    {{/if}}
+</tr>

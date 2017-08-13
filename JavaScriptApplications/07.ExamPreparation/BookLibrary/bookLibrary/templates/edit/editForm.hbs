@@ -1,0 +1,14 @@
+<section id="viewEditBook">
+    <h1>Edit existing book</h1>
+    <div class="content">
+        <form id="formEditBook" method="post" action="#/edit/{{id}}">
+            <div>Title:</div>
+            <div><input type="text" name="title" value="{{title}}" required /></div>
+            <div>Author:</div>
+            <div><input type="text" name="author" value="{{author}}" required /></div>
+            <div>Description:</div>
+            <div><textarea name="description" rows="10" required>{{description}}</textarea></div>
+            <div><input type="submit" value="Edit" /></div>
+        </form>
+    </div>
+</section>

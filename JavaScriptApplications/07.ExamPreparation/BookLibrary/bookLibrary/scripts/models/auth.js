@@ -22,7 +22,7 @@ let auth = (() => {
     }
 
     // user/register
-    function register(username, password, repeatPassword) {
+    function register(username, password) {
         let userData = {
             username,
             password
