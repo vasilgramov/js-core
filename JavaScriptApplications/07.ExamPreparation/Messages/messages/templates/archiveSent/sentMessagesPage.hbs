@@ -1,0 +1,22 @@
+<section id="viewArchiveSent">
+    <h1>Archive (Sent Messages)</h1>
+    <div class="messages" id="sentMessages">
+        <table>
+            <thead>
+            <tr>
+                <th>To</th>
+                <th>Message</th>
+                <th>Date Sent</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {{# each messages}}
+                {{> message}}
+            {{/each}}
+
+            </tbody>
+        </table>
+    </div>
+</section>

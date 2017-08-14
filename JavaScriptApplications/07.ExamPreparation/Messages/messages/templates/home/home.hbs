@@ -1,0 +1,15 @@
+<main>
+    {{#if isAnonymous}}
+        <section id="viewAppHome">
+            <h1>Welcome</h1>
+            Welcome to our messaging system.
+        </section>
+    {{else}}
+        <section id="viewUserHome">
+            <h1 id="viewUserHomeHeading">Welcome, {{name}}!</h1>
+            <a href="#/mymessages" id="linkUserHomeMyMessages">My Messages</a>
+            <a href="#/sendmessage" id="linkUserHomeSendMessage">Send Message</a>
+            <a href="#/archive" id="linkUserHomeArchiveSent">Archive (Sent)</a>
+        </section>
+    {{/if}}
+</main>

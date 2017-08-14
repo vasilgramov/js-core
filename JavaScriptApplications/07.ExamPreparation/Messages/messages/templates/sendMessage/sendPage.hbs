@@ -1,0 +1,20 @@
+{{> header}}
+
+<section id="viewSendMessage">
+    <h1>Send Message</h1>
+    <form id="formSendMessage" action="#/sendmessage" method="post">
+        <div>Recipient:</div>
+        <div>
+            <select name="recipient" required id="msgRecipientUsername">
+                {{# each users}}
+                    {{> user}}
+                {{/each}}
+            </select>
+        </div>
+        <div>Message Text:</div>
+        <div><input type="text" name="text" required id="msgText"/></div>
+        <div><input type="submit" value="Send"/></div>
+    </form>
+</section>
+
+{{> footer}}
