@@ -63,7 +63,7 @@ function startApp() {
         this.get('#/register', function (context) {
 
             context.isAnonymous = sessionStorage.getItem('username') === null;
-            context.username = sessionStorage.getItem('username');
+            context.name = sessionStorage.getItem('name');
 
             context.loadPartials({
                 header: './templates/common/header.hbs',
@@ -105,7 +105,7 @@ function startApp() {
         this.get('#/sendmessage', function (context) {
 
             context.isAnonymous = sessionStorage.getItem('username') === null;
-            context.username = sessionStorage.getItem('username');
+            context.name = sessionStorage.getItem('name');
 
             messageService.getAllUsers()
                 .then(function (users) {
@@ -129,6 +129,9 @@ function startApp() {
             let recipient = context.params.recipient;
             let text = context.params.text;
 
+
+            console.log(recipient);
+
             messageService.sendMessage(senderUsername, senderName, recipient, text)
                 .then(function (messageData) {
                     auth.showInfo('Message sent!');
@@ -140,7 +143,10 @@ function startApp() {
         // MY MESSAGES
         this.get('#/mymessages', function (context) {
 
-            messageService.loadMessages()
+            context.isAnonymous = sessionStorage.getItem('username') === null;
+            context.name = sessionStorage.getItem('name');
+
+            messageService.loadReceivedMessages()
                 .then(function (messages) {
 
                     for (let m of messages) {
@@ -174,6 +180,9 @@ function startApp() {
 
         // SENT MESSAGES
         this.get('#/archive', function (context) {
+
+            context.isAnonymous = sessionStorage.getItem('username') === null;
+            context.name = sessionStorage.getItem('name');
 
             messageService.loadSentMessages()
                 .then(function (messages) {
