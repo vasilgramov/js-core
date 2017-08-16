@@ -1,0 +1,47 @@
+{{> header}}
+
+<main class="content">
+
+    {{> navigation}}
+
+    <section id="viewPostDetails">
+
+        <!-- POST DETAILS DESCRIPTION & IMAGE & TITLE-->
+        <article id="postDetails" class="post">
+            <div class="col thumbnail">
+                <img src="{{imageUrl}}">
+            </div>
+            <div class="post-content">
+                <div class="title">
+                    <strong>{{title}}</strong>
+                </div>
+                <div class="details">
+                    {{description}}
+                </div>
+            </div>
+        </article>
+
+        <!-- Create comment form-->
+        <div class="submitArea">
+            <h1>Post Comment</h1>
+            <form id="createCommentForm" class="submitForm" action="#/comment/{{id}}" method="post">
+                <label>Content:</label>
+                <input id="cmtContent" name="content" type="text">
+                <input type="submit" value="Post Comment">
+            </form>
+        </div>
+
+        <div id="allComments" class="comments">
+
+            {{#each comments}}
+                {{> comment}}
+            {{else}}
+                <p>No comments yet.</p>
+            {{/each}}
+
+        </div>
+    </section>
+
+</main>
+
+{{> footer}}

@@ -1,0 +1,17 @@
+<section id="viewPostEdit">
+    <div class="submitArea">
+        <h1>Edit Post</h1>
+        <p>Please, fill out the form. A thumbnail image/description is not required.</p>
+        <form id="editPostForm" class="submitForm" action="#/posts/edit/{{id}}" method="post">
+            <label>Link URL:</label>
+            <input name="url" type="text" value="{{url}}">
+            <label>Link Title:</label>
+            <input name="title" type="text" value="{{title}}">
+            <label>Link Thumbnail Image (optional):</label>
+            <input name="image" type="text" value="{{imageUrl}}">
+            <label>Comment (optional):</label>
+            <textarea name="description">{{description}}</textarea>
+            <input type="submit" value="Edit Post">
+        </form>
+    </div>
+</section>

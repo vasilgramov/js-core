@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Market</title>
+    <link rel="stylesheet" type="text/css" href="./css/market.css" />
+
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
+    <script src="../node_modules/sammy/lib/min/sammy-0.7.6.min.js"></script>
+    <script src="../node_modules/sammy/lib/plugins/sammy.handlebars.js"></script>
+
+    <script src="./scripts/models/requester.js"></script>
+    <script src="./scripts/models/auth.js"></script>
+    <script src="./scripts/models/productService.js"></script>
+
+    <script src="./scripts/app.js"></script>
+
+</head>
+
+<div id="loadingBox">Loading ...</div>
+
+<div id="infoBox">Info</div>
+
+<div id="errorBox">Error</div>
+
+<body onload="startApp()">
+    <div id="app"></div>
+</body>
+
+</html>
+
+
+
+
+
